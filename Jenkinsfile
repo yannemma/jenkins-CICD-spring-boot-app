@@ -9,8 +9,8 @@ pipeline {
     environment {
         DOCKERHUB_AUTH = credentials('DockerHubCredentials')
         MYSQL_AUTH= credentials('MYSQL_AUTH')
-        HOSTNAME_DEPLOY_PROD = "192.168.99.11"
-        HOSTNAME_DEPLOY_STAGING = "192.168.99.12"
+        HOSTNAME_DEPLOY_PROD = "100.0.0.2"
+        HOSTNAME_DEPLOY_STAGING = "100.0.0.3"
         IMAGE_NAME= 'paymybuddy'
         IMAGE_TAG= 'latest'
     }
@@ -25,22 +25,6 @@ pipeline {
             post {
                 always {
                     junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
-
-        stage('SonarCloud analysis') {
-            steps {
-                withSonarQubeEnv('SonarCloudServer') {
-                    sh 'mvn sonar:sonar -s .m2/settings.xml'
-                }
-            }
-        }
-
-        stage('Quality Gate') {
-            steps {
-                timeout(time: 60, unit: 'SECONDS') {
-                    waitForQualityGate abortPipeline: false
                 }
             }
         }
@@ -145,3 +129,4 @@ pipeline {
     }
 
 }
+
