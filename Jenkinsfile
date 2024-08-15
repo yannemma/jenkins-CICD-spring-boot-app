@@ -11,7 +11,7 @@ pipeline {
         MYSQL_AUTH= credentials('MYSQL_AUTH')
         HOSTNAME_DEPLOY_PROD = "100.0.0.2"
         HOSTNAME_DEPLOY_STAGING = "100.0.0.3"
-        IMAGE_NAME= 'paymybuddy'
+        IMAGE_NAME= 'paymybuddy236'
         IMAGE_TAG= 'latest'
     }
 
