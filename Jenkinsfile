@@ -11,7 +11,7 @@ pipeline {
         MYSQL_AUTH= credentials('MYSQL_AUTH')
         HOSTNAME_DEPLOY_PROD = "100.0.0.2"
         HOSTNAME_DEPLOY_STAGING = "100.0.0.3"
-        IMAGE_NAME= 'paymybuddy237'
+        IMAGE_NAME= 'yoyama237'
         IMAGE_TAG= 'latest'
     }
 
@@ -80,7 +80,8 @@ pipeline {
             steps {
                 sh '''
                     sleep 30
-                    apk add --no-cache curl
+                    sudo apt update
+                    sudo apt install -y curl
                     curl ${HOSTNAME_DEPLOY_STAGING}:8080
                 '''
             }
@@ -121,7 +122,8 @@ pipeline {
             steps {
                 sh '''
                     sleep 30
-                    apk add --no-cache curl
+                    sudo apt update
+                    sudo apt install -y curl
                     curl ${HOSTNAME_DEPLOY_PROD}:8080
                 '''
             }
