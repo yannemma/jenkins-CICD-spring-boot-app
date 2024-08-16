@@ -80,9 +80,7 @@ pipeline {
             steps {
                 sh '''
                     sleep 30
-                    apt update
-                    apt install sudo
-                    sudo apt install -y curl
+                    apk add --no-cache curl
                     curl ${HOSTNAME_DEPLOY_STAGING}:8080
                 '''
             }
@@ -123,9 +121,7 @@ pipeline {
             steps {
                 sh '''
                     sleep 30
-                    apt update
-                    apt install sudo
-                    sudo apt install -y curl
+                    apk add --no-cache curl
                     curl ${HOSTNAME_DEPLOY_PROD}:8080
                 '''
             }
