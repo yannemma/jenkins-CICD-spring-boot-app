@@ -120,9 +120,9 @@ pipeline {
             }
             steps {
                 sh '''
-                    sleep 30
+                    sleep 60
                     apk add --no-cache curl
-                    curl ${HOSTNAME_DEPLOY_PROD}:8082
+                    curl ${HOSTNAME_DEPLOY_PROD}:8080
                 '''
             }
         }
