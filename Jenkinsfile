@@ -80,7 +80,8 @@ pipeline {
             steps {
                 sh '''
                     sleep 30
-                    sudo apt update
+                    apt update
+                    apt install sudo
                     sudo apt install -y curl
                     curl ${HOSTNAME_DEPLOY_STAGING}:8080
                 '''
@@ -122,7 +123,8 @@ pipeline {
             steps {
                 sh '''
                     sleep 30
-                    sudo apt update
+                    apt update
+                    apt install sudo
                     sudo apt install -y curl
                     curl ${HOSTNAME_DEPLOY_PROD}:8080
                 '''
