@@ -122,7 +122,7 @@ pipeline {
                 sh '''
                     sleep 30
                     apk add --no-cache curl
-                    curl ${HOSTNAME_DEPLOY_PROD}:8080
+                    curl ${HOSTNAME_DEPLOY_PROD}:8082
                 '''
             }
         }
